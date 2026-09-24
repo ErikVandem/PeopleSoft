@@ -1,0 +1,3 @@
+# Treat PeopleCode and SQL exports as text for diffs
+*.pcode text diff
+*.sql   text diff
