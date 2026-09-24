@@ -4,12 +4,11 @@ Guidance for Claude Code when working in this repository.
 
 ## Environment
 
-<!-- TODO: fill in the real values for your installation. -->
-- **PeopleTools version:** 8.xx (e.g. 8.60)
-- **Application / version:** e.g. HCM 9.2, FSCM 9.2, Campus Solutions 9.2
-- **PUM image / update level:** e.g. PI 45
-- **Database platform:** Oracle / SQL Server / DB2
-- **Customization prefix:** e.g. `WB_` (all custom objects start with this prefix)
+- **PeopleTools version:** 8.62
+- **Application / version:** HCM 9.2
+- **PUM image / update level:** HCM PUM Image 48, Update 4 (PUM upgrade 8.61)
+- **Database platform:** Oracle Database 19c Enterprise Edition Release 19.0.0.0.0
+- **Customization suffix:** `_W` — all custom objects end with this suffix (e.g. `JOB_EXT_W`, `EMPL_UTILS_W`)
 
 When writing code, only use PeopleCode built-ins, classes and meta-SQL that exist in the PeopleTools version above. If unsure whether a function exists in this version, say so rather than guessing.
 
@@ -76,7 +75,7 @@ Pick the right event; getting this wrong is the most common PeopleCode bug.
 
 ## Customization rules
 
-- **Never modify delivered objects if a clone, event mapping, or app-class override will do.** Prefer, in order: Event Mapping (PT 8.55+) > Page and Field Configurator > drop-zones > cloned custom object > modifying delivered code.
+- **Never modify delivered objects if a clone, event mapping, or app-class override will do.** Prefer, in order: Event Mapping (PT 8.55+) > Page and Field Configurator > drop-zones > cloned custom object (with `_W` suffix) > modifying delivered code.
 - If delivered code must be modified, wrap each change:
   ```
   /* WB_CUSTOM BEGIN - <ticket/ref> - <initials> - <date> - <reason> */
@@ -84,7 +83,7 @@ Pick the right event; getting this wrong is the most common PeopleCode bug.
   /* WB_CUSTOM END - <ticket/ref> */
   ```
   <!-- TODO: replace WB_CUSTOM with your team's marker. -->
-- All new objects use the customization prefix.
+- All new objects use the `_W` customization suffix.
 
 ## Working with Claude in this repo
 
